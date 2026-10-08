@@ -42,3 +42,19 @@ Chart colors come from `palette.series` in the theme — an eight-hue categorica
 Theme tokens are in `src/theme/theme.js`. Sample data comes from `src/data/flights.js`. To use real data, replace `generateFlights()` with an API call that returns the same shape (`{ model, manufacturer, serial, protocol, affiliation, home, points: [{ t, lat, lng, msl, hat, speed, rssi }], ... }`).
 
 Screens narrower than the `md` breakpoint get a bottom-sheet layout.
+
+### Alerts (`src/components/alerts/`)
+
+| Area | Component |
+| --- | --- |
+| Section shell with the Recent Activity / Triggers / Watched Drones sidebar and the admin Notifications Center | `AlertsPage.jsx` |
+| Alert feed with Trigger/Watch chips, affiliation dot, source and model, filters and Refresh | `RecentActivityPage.jsx` |
+| Searchable, paginated trigger list | `TriggersPage.jsx` |
+| Trigger detail: zone map plus the Historical Alerts table | `TriggerDetailPage.jsx` |
+| Watched drones table with per-row Email/SMS switches, status and row actions | `WatchedDronesPage.jsx` |
+| Notifications Center: Overview KPIs and charts, Activity Log, Subscribers | `NotificationsCenterPage.jsx` |
+| Shared chips, affiliation dot and page heading | `AlertsCommon.jsx` |
+
+Mock data lives in `src/data/alerts.js` — alerts, triggers, watched drones, delivery
+statistics and subscribers are all generated locally; subscriber names, emails and
+phone numbers are invented.

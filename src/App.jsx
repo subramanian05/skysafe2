@@ -13,6 +13,7 @@ import LastUpdateCard from './components/LastUpdateCard.jsx';
 import AltitudeProfile from './components/AltitudeProfile.jsx';
 import { SearchDialog, DataPointsDialog } from './components/Dialogs.jsx';
 import DashboardPage from './components/dashboard/DashboardPage.jsx';
+import AlertsPage from './components/alerts/AlertsPage.jsx';
 import {
   DEFAULT_FILTERS, TIME_PRESETS, activeFilterCount, applyFilters, fmtDateTime, lastPoint,
 } from './utils.js';
@@ -43,7 +44,7 @@ export default function App() {
   const filtered = useMemo(() => applyFilters(flights, filters), [flights, filters]);
 
   // ---- ui state ----
-  const [page, setPage] = useState('map'); // 'map' | 'dashboard'
+  const [page, setPage] = useState('map'); // 'map' | 'dashboard' | 'alerts'
   const [panel, setPanel] = useState(null); // 'detections' | 'filters' | null
   const [selectedId, setSelectedId] = useState(null);
   const [detailsId, setDetailsId] = useState(null);
@@ -173,6 +174,12 @@ export default function App() {
         {page === 'dashboard' && (
           <Box sx={{ flex: 1, minHeight: 0 }}>
             <DashboardPage />
+          </Box>
+        )}
+
+        {page === 'alerts' && (
+          <Box sx={{ flex: 1, minHeight: 0 }}>
+            <AlertsPage onOpenFlight={() => setPage('map')} />
           </Box>
         )}
 

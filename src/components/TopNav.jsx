@@ -39,7 +39,7 @@ export default function TopNav({ themePref, onThemePref, onRegion, page = 'map',
     </ToggleButtonGroup>
   );
 
-  const PAGE_OF = { Dashboard: 'dashboard', 'Flight Map': 'map' };
+  const PAGE_OF = { Dashboard: 'dashboard', 'Flight Map': 'map', Alerts: 'alerts' };
 
   const navButton = (label) => {
     const active = PAGE_OF[label] === page;
@@ -51,7 +51,7 @@ export default function TopNav({ themePref, onThemePref, onRegion, page = 'map',
       );
     if (label === 'Alerts')
       return (
-        <Button key={label} color="inherit" sx={navSx(false)}>
+        <Button key={label} color="inherit" sx={navSx(active)} onClick={() => onPage('alerts')}>
           Alerts
           <Badge badgeContent={alertCount} color="error" sx={{ ml: 1.75, '& .MuiBadge-badge': { position: 'static', transform: 'none' } }} />
         </Button>
